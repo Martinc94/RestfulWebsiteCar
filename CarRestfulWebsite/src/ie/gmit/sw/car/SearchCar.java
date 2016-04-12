@@ -11,7 +11,7 @@ public class SearchCar {
 private String name="Toyota";
 private String model=" Corolla";
 	
-/*@GET
+@GET
 @Produces(MediaType.TEXT_HTML)
 public String getCarName(){
 	String str;
@@ -19,7 +19,7 @@ public String getCarName(){
 	str=name+" "+model;
 	
 	return str;	
-}//end getCarName*/
+}//end getCarName
 
 //pass parameters from Web page with name
 
