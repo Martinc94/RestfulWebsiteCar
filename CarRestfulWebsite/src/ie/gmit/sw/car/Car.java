@@ -23,7 +23,7 @@ public class Car {
 		
 	}
 	
-	public Car(int id, String reg, String make, String model, String colour, String price, String description,File picture) {
+	public Car(int id, String make, String model,String reg, String colour, String price, String description,File picture) {
 		//Constructor for Existing Car
 		this.id = id;
 		this.reg = reg;
@@ -60,6 +60,19 @@ public class Car {
 		this.colour = colour;
 		this.price = price;
 		this.description = description;
+		
+	}
+	
+	public Car(int id, String make, String model,String reg, String colour, String price, String description) {
+		//Constructor for Existing Car no pic
+		this.id = id;
+		this.reg = reg;
+		this.make = make;
+		this.model = model;
+		this.colour = colour;
+		this.price = price;
+		this.description = description;
+		
 		
 	}
 
@@ -129,8 +142,12 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", reg=" + reg + ", make=" + make + ", model=" + model + ", colour=" + colour
-				+ ", price=" + price + ", description=" + description + ", picture=" + picture + "]";
+		return "<p>"+make+" "+" "+model+" "+reg+" "+colour+" "+price+" "+description+"</p>";
+	}
+	
+	
+	public String toTable() {
+		return "<tr><td>"+make+" "+"</td> <td>"+model+"</td> <td>"+reg+"</td> <td>"+colour+"</td> <td>"+price+"</td> <td>"+description+"</td></tr>";
 	}
 	
 	
