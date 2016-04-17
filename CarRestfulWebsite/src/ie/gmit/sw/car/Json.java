@@ -16,12 +16,15 @@ private String price;
 private String description;*/
 
 
-@GET
-@Produces(MediaType.APPLICATION_JSON)
-public String GetJson() {
-	String Json="";
+/*@GET
+@Produces("application/Json")
+public TestCar GetJson() {
 	
-	return Json;
+	
+	return TestCar;
 }
+*/
+
+
 
 }

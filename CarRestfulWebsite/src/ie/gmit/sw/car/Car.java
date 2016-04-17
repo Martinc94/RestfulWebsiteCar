@@ -192,5 +192,13 @@ public class Car {
 }
 	
 	
+	public String carJsonInfo(){
+		String info;
+		
+		info="\"Make:\"\""+make+"\",\"Model:\"\""+model+"\",\"Reg:\"\""+reg+"\",\"Colour:\"\""+colour+"\",\"Price\"\""+price+"\",\"Description\"\""+description;
+		
+		return info;	
+	}
+	
 }
 

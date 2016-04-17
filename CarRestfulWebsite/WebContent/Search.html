@@ -4,20 +4,34 @@
 <meta charset="ISO-8859-1">
 <title>Car Search</title>
 </head>
+
+<style>
+body {background-color:lightgrey;}
+h1   {color:blue;}
+p    {color:green;}
+</style>
 <body>
+
 <h1 align="center">Search Page</h1>
-
-
+<ul>
 <li><a href="/CarRestfulWebsite/Home.html">Home Page</a></li>
-
-<table align="center">
-<form  action="rest/search/" method="get">
-		<p>
-			Car Model : <input type="text" name="make" />
-		</p>
+<li><a href="/CarRestfulWebsite/rest/listAll">List All Page</a></li>
+</ul>
+<div align= "center">
+	<table>
+		<form action="rest/searchbymake/" method="get">
+			<p>Car Make :</p>	<input type="text" name="make"><input type="submit" value="Search" />
+		</form>
+	
+		<form action="rest/searchbymodel/" method="get">
+			<p>Car Model :</p> <input type="text" name="model"><input type="submit" value="Search" />	
+		</form>
 		
-		<input type="submit" value="Search" />
-	</form>
+		<form action="rest/searchbyreg/" method="get">
+			<p>Car Reg :</p> <input type="text" name="reg"><input type="submit" value="Search" />
+		</form>
 	</table>
+</div>
+	
 </body>
 </html>

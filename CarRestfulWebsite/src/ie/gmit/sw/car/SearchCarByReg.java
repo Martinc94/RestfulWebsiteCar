@@ -12,8 +12,8 @@ import javax.ws.rs.core.MediaType;
 
 import db.DBconnector;
 
-@Path("/search")
-public class SearchCar {
+@Path("/searchbyreg")
+public class SearchCarByReg {
 private int id;
 private String make;
 private String model;
@@ -25,8 +25,8 @@ private String description;
 //pass parameters from Web page with name"make"
 @GET
 @Produces(MediaType.TEXT_HTML)
-public String getCarByModel(@QueryParam("make") String SearchName){
-	String Smake = SearchName;  
+public String getCarByModel(@QueryParam("reg") String SearchName){
+	String Sreg = SearchName;  
 	Header h=new Header();
 	ResultSet rs;
 	String Result="";
@@ -46,7 +46,7 @@ public String getCarByModel(@QueryParam("make") String SearchName){
 		Connection conn = dbc.getConn();
 		Statement stmt = conn.createStatement();
 		
-		String qry = "select * from car where make like '%"+Smake+"%'";
+		String qry = "select * from car where reg like '%"+Sreg+"%'";
 		//String qry = "select * from car";
 		rs = stmt.executeQuery(qry);
 		//if car found
