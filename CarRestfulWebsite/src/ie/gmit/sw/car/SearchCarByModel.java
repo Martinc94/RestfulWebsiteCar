@@ -22,21 +22,19 @@ private String colour;
 private String price;
 private String description;
 
-//pass parameters from Web page with name"make"
+//pass parameters from Web page with name"Model" and return results page
 @GET
 @Produces(MediaType.TEXT_HTML)
 public String getCarByModel(@QueryParam("model") String SearchName){
 	String SModel = SearchName;  
-	Header h=new Header();
+	Html h=new Html();
 	ResultSet rs;
 	String Result="";
 	
-	Result = h.SearchHeader();
-	
-	Result+="<table align=\"center\" border=\"1\">";
-	Result+=" <tr><th>Make</th><th>Model</th><th>Registration</th><th>Colour</th><th>Price</th><th>Description</th></tr>";
-		
-		
+	Result = h.SearchHeader()+h.Style();
+	Result+=h.getTable();
+	Result+=h.getTableHeader();
+			
 	//search method for car model
 	DBconnector dbc = new DBconnector();
 	
@@ -44,9 +42,8 @@ public String getCarByModel(@QueryParam("model") String SearchName){
 		Class.forName("com.mysql.jdbc.Driver"); 
 		Connection conn = dbc.getConn();
 		Statement stmt = conn.createStatement();
-		
+		//Selects cars from the database where their model matches or partially matches the search model
 		String qry = "select * from car where model like '%"+SModel+"%'";
-		//String qry = "select * from car";
 		rs = stmt.executeQuery(qry);
 		//if car found
 		if(rs.first()){
@@ -60,7 +57,7 @@ public String getCarByModel(@QueryParam("model") String SearchName){
 				 colour = rs.getString("colour");
 				 price = rs.getString("price");
 				 description = rs.getString("description");
-				 
+				//create new car from Database
 				 Car c = new Car(id, make, model, reg, colour, price, description);
 				 Result+=c.toTable();
 			}//end while
@@ -77,11 +74,10 @@ public String getCarByModel(@QueryParam("model") String SearchName){
 	}	
 
 	Result+="</table>";
-
-	
+	//returns page to web browser 
 	return Result;	
 	
 }//end getCarByModel
 
 
-}//End SearchCar
+}//End SearchCarByModel

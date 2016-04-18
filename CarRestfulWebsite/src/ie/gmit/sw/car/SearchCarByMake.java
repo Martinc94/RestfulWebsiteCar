@@ -25,16 +25,15 @@ private String description;
 //pass parameters from Web page with name"make"
 @GET
 @Produces(MediaType.TEXT_HTML)
-public String getCarByModel(@QueryParam("make") String SearchName){
+public String getCarByMake(@QueryParam("make") String SearchName){
 	String Smake = SearchName;  
-	Header h=new Header();
+	Html h=new Html();
 	ResultSet rs;
 	String Result="";
 	
-	Result = h.SearchHeader();
-	
-	Result+="<table align=\"center\" border=\"1\">";
-	Result+=" <tr><th>Make</th><th>Model</th><th>Registration</th><th>Colour</th><th>Price</th><th>Description</th></tr>";
+	Result = h.SearchHeader()+h.Style();
+	Result+=h.getTable();
+	Result+=h.getTableHeader();
 		
 		
 	//search method for car name
@@ -61,7 +60,7 @@ public String getCarByModel(@QueryParam("make") String SearchName){
 				 colour = rs.getString("colour");
 				 price = rs.getString("price");
 				 description = rs.getString("description");
-				 
+				//create new car from Database
 				 Car c = new Car(id, make, model, reg, colour, price, description);
 				 Result+=c.toTable();
 			}//end while
@@ -78,11 +77,10 @@ public String getCarByModel(@QueryParam("make") String SearchName){
 	}	
 
 	Result+="</table>";
-
-	
+	//returns page to web browser 
 	return Result;	
 	
-}//end getCarByModel
+}//end getCarByMake
 
 
-}//End SearchCar
+}//End SearchCarByModel

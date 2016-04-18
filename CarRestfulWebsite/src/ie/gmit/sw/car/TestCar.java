@@ -3,7 +3,7 @@ package ie.gmit.sw.car;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "Car")
+@XmlRootElement
 public class TestCar {
 	
 	private int id;

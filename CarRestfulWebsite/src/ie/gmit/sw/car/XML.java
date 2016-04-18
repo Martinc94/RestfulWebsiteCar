@@ -5,23 +5,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/xml")
+@Path("/getXml")
 public class XML {
-/*private int id;
+private int id;
 private String make;
 private String model;
 private String reg;
 private String colour;
 private String price;
-private String description;*/
+private String description;
 
 
 @GET
-@Produces(MediaType.TEXT_XML)
-public String GetJson() {
-	String xml="";
+@Produces("application/json")
+public TestCar GetXml() {
+	TestCar c = new TestCar(reg, make, model, colour, price, description);
 	
-	return xml;
+	return c;
 }
 
 }

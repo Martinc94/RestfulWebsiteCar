@@ -13,7 +13,6 @@ import db.DBconnector;
 
 @Path("/listAll")
 public class AllCars {
-	
 	private int id;
 	private String make;
 	private String model;
@@ -24,18 +23,17 @@ public class AllCars {
 	
 	@GET
 	@Produces(MediaType.TEXT_HTML)
-	public String getCarByModel(){
-		Header h=new Header();
+	public String getAllCars(){
+		Html h=new Html();
 		ResultSet rs;
 		String Result="";
 		
-		Result = h.ListAllHeader();
-		
-		Result+="<table align=\"center\" border=\"1\">";
-		Result+=" <tr><th>Make</th><th>Model</th><th>Registration</th><th>Colour</th><th>Price</th><th>Description</th></tr>";
+		Result = h.ListAllHeader()+h.Style();
+		Result+=h.getTable();
+		Result+=h.getTableHeader();
 			
 			
-		//search method for car name
+		//search method for all cars
 		//return list of cars 
 		DBconnector dbc = new DBconnector();
 		
@@ -43,9 +41,8 @@ public class AllCars {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			Connection conn = dbc.getConn();
 			Statement stmt = conn.createStatement();
-			
+			//selects all cars in the database
 			String qry = "select * from car";
-			//String qry = "select * from car";
 			rs = stmt.executeQuery(qry);
 			//if car found
 			if(rs.first()){
@@ -59,8 +56,9 @@ public class AllCars {
 					 colour = rs.getString("colour");
 					 price = rs.getString("price");
 					 description = rs.getString("description");
-					 
+					 //create new car from Database
 					 Car c = new Car(id, make, model, reg, colour, price, description);
+					 //Add to table
 					 Result+=c.toTable();
 				}//end while
 			}//end if
@@ -74,12 +72,10 @@ public class AllCars {
 			System.out.println("JDBC Error");
 			
 		}	
-
-		Result+="</table>";
-
-		
+		Result+="</table>";	
+		//returns page to web browser 
 		return Result;	
 		
-	}//end getCarByModel
+	}//end getAllCars
 
-}
+}//end AllCars
