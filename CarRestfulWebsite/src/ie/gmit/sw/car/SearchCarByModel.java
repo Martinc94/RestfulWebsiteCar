@@ -22,6 +22,9 @@ private String colour;
 private String price;
 private String description;
 
+/**
+ * Searches for cars that match or partially match searched Model
+ */
 //pass parameters from Web page with name"Model" and return results page
 @GET
 @Produces(MediaType.TEXT_HTML)

@@ -7,7 +7,6 @@ import java.sql.Statement;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import db.DBconnector;
 
@@ -21,17 +20,20 @@ public class AllCars {
 	private String price;
 	private String description;
 	
+	/**
+	 * Returns all cars in a HTML Table
+	 */
+	
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getAllCars(){
 		Html h=new Html();
 		ResultSet rs;
 		String Result="";
-		
+		//initialise HTML
 		Result = h.ListAllHeader()+h.Style();
 		Result+=h.getTable();
-		Result+=h.getTableHeader();
-			
+		Result+=h.getTableHeader();		
 			
 		//search method for all cars
 		//return list of cars 

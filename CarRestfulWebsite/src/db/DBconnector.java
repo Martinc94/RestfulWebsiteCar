@@ -5,6 +5,10 @@ public class DBconnector {
 	String user="Martin";
 	String password="Martin";
 	
+	/**
+	 * Returns a connection to the database
+	 */
+	
 	//returns a connection to the database
 	public Connection getConn() throws SQLException{
 		Connection conn;
@@ -15,10 +19,7 @@ public class DBconnector {
 			System.out.println("Error connecting to Azure.");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/cardb","root","");
 		}
-		
-		
-		return conn;	
-			
-	}
+		return conn;		
+	}//end getConn
 
-}
+}//end DBconnector

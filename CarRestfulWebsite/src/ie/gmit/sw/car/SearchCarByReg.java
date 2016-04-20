@@ -22,7 +22,10 @@ private String colour;
 private String price;
 private String description;
 
-//@get pass parameters from Web page with name"Reg" and return a results page to the browser3
+/**
+ * Searches for cars that match or partially match searched reg
+ */
+//@get pass parameters from Web page with name"Reg" and return a results page to the browser
 @GET
 @Produces(MediaType.TEXT_HTML)
 public String getCarByReg(@QueryParam("reg") String SearchName){
@@ -35,8 +38,7 @@ public String getCarByReg(@QueryParam("reg") String SearchName){
 	Result+=h.getTable();
 	Result+=h.getTableHeader();	
 		
-	//search method for car Reg
-	//return list of cars 
+	//search method for car Reg and return list of cars in a table 
 	DBconnector dbc = new DBconnector();
 	
 	try {

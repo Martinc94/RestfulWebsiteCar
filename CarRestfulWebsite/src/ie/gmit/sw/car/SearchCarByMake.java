@@ -22,6 +22,9 @@ private String colour;
 private String price;
 private String description;
 
+/**
+ * Searches for cars that match or partially match searched make
+ */
 //pass parameters from Web page with name"make"
 @GET
 @Produces(MediaType.TEXT_HTML)
@@ -36,8 +39,7 @@ public String getCarByMake(@QueryParam("make") String SearchName){
 	Result+=h.getTableHeader();
 		
 		
-	//search method for car name
-	//return list of cars 
+	//search method for car make and return list of cars 
 	DBconnector dbc = new DBconnector();
 	
 	try {
@@ -46,7 +48,6 @@ public String getCarByMake(@QueryParam("make") String SearchName){
 		Statement stmt = conn.createStatement();
 		
 		String qry = "select * from car where make like '%"+Smake+"%'";
-		//String qry = "select * from car";
 		rs = stmt.executeQuery(qry);
 		//if car found
 		if(rs.first()){
@@ -83,4 +84,4 @@ public String getCarByMake(@QueryParam("make") String SearchName){
 }//end getCarByMake
 
 
-}//End SearchCarByModel
+}//End SearchCarByMake
