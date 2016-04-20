@@ -40,7 +40,7 @@ public String getCarByReg(@QueryParam("reg") String SearchName){
 		
 	//search method for car Reg and return list of cars in a table 
 	DBconnector dbc = new DBconnector();
-	
+	//Try to connect to Database
 	try {
 		Class.forName("com.mysql.jdbc.Driver"); 
 		Connection conn = dbc.getConn();
@@ -52,6 +52,7 @@ public String getCarByReg(@QueryParam("reg") String SearchName){
 		if(rs.first()){
 			//points to first car
 			rs.beforeFirst();
+			//get data from database
 			while (rs.next()) {
 				 id = rs.getInt("id");
 				 make = rs.getString("make");
@@ -73,7 +74,6 @@ public String getCarByReg(@QueryParam("reg") String SearchName){
 		e.printStackTrace();
 	} catch (ClassNotFoundException e) {
 		System.out.println("JDBC Error");
-		
 	}	
 
 	Result+="</table>";
@@ -81,6 +81,5 @@ public String getCarByReg(@QueryParam("reg") String SearchName){
 	return Result;	
 	
 }//end getCarByReg
-
 
 }//End SearchCarByReg

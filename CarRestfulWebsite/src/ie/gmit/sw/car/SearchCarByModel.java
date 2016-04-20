@@ -40,7 +40,7 @@ public String getCarByModel(@QueryParam("model") String SearchName){
 			
 	//search method for car model
 	DBconnector dbc = new DBconnector();
-	
+	//try to connect to database
 	try {
 		Class.forName("com.mysql.jdbc.Driver"); 
 		Connection conn = dbc.getConn();
@@ -52,6 +52,7 @@ public String getCarByModel(@QueryParam("model") String SearchName){
 		if(rs.first()){
 			//points to first car
 			rs.beforeFirst();
+			//get data from database
 			while (rs.next()) {
 				 id = rs.getInt("id");
 				 make = rs.getString("make");
@@ -72,8 +73,7 @@ public String getCarByModel(@QueryParam("model") String SearchName){
 		System.out.println("Error Connection to Database" );
 		e.printStackTrace();
 	} catch (ClassNotFoundException e) {
-		System.out.println("JDBC Error");
-		
+		System.out.println("JDBC Error");	
 	}	
 
 	Result+="</table>";
@@ -81,6 +81,5 @@ public String getCarByModel(@QueryParam("model") String SearchName){
 	return Result;	
 	
 }//end getCarByModel
-
 
 }//End SearchCarByModel
